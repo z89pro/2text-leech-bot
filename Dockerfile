@@ -1,6 +1,6 @@
 FROM python:3.11-slim-bookworm
 
-# Install required system deps
+# Install system dependencies
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         gcc \
@@ -13,11 +13,11 @@ RUN apt-get update \
 # Set working directory
 WORKDIR /app
 
-# Copy bot files
+# Copy project files into the container
 COPY . /app
 
-# Install Python requirements
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Start bot
-CMD ["python3", "main.py"]
+# Start the bot
+CMD ["python3", "modules/main.py"]
